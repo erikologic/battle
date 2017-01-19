@@ -1,0 +1,21 @@
+<html>
+<head>
+  <title> Battle </title>
+</head>
+<body>
+<h1>Battle</h1>
+<p><%= @player_1_name %> vs. <%= @player_2_name %></p>
+<p>Hit points Player 1: <%= @p1_points %> </p>
+<p>Hit points Player 2: <%= @p2_points %></p>
+
+<form action="/names" method="post">
+  <input type="submit" value="Attack" />
+  <input type="hidden" name="attacker" value="<%=@player_1_name%>" />
+</form>
+
+<% if @attacker %>
+<p><%=@attacker%> is attacking!...</p>
+<% end %>
+
+</body>
+</html>
