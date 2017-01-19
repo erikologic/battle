@@ -7,10 +7,13 @@
 <p><%= @player_1_name %> vs. <%= @player_2_name %></p>
 <p>Hit points Player 1: <%= @p1_points %> </p>
 <p>Hit points Player 2: <%= @p2_points %></p>
-
-<form action="/names" method="post">
-  <input type="submit" value="Attack" />
-  <input type="hidden" name="attacker" value="<%=@player_1_name%>" />
+<% if session[:last_action] %>
+<br>
+<p><%= session[:last_action] %></p>
+<% end %>
+<br>
+<form action="/hit_p2" method="post">
+  <input type="submit" value="Attack Player 2" />
 </form>
 
 <% if @attacker %>
