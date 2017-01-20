@@ -16,6 +16,7 @@ describe Player do
     it 'are deductable' do
       expect{player.points -= 10}.to change{player.points}.to(90)
     end
+
   end
 
 end

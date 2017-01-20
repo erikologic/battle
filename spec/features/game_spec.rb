@@ -50,6 +50,10 @@ describe Game do
       game.player_attack
       expect(game.not_active_player.points).to eq(90)
     end
-  end
 
+    it "returns a Loser message when a player loses" do
+        9.times {game.player_attack}
+        expect(game.player_attack).to raise_error "Lauren Lost!!"
+      end
+    end
 end
