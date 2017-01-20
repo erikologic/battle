@@ -8,26 +8,20 @@ class Battle < Sinatra::Base
   end
 
   post '/names' do
-    session[:player_1_name] = params[:player_1_name]
-    session[:player_2_name] = params[:player_2_name]
+    $player1 = Player.new(params[:player_1_name])
+    $player2 = Player.new(params[:player_2_name])
     redirect '/play'
   end
 
   get '/play' do
-    session[:p1_points] ||= 100
-    session[:p2_points] ||= 100
-    @p1_points = session[:p1_points]
-    @p2_points = session[:p2_points]
-    @player_1_name = session[:player_1_name]
-    @player_2_name = session[:player_2_name]
     # @last_action = session[:last_action] ? session[:last_action] : nil
     erb :play
   end
 
 
-  post '/hit_p2' do
-    session[:p2_points] -= 10
-    session[:last_action] = "Player 2 was attacked"
+  post '/p1_attacks' do
+    $player2.points -= 10
+    session[:last_action] = "#{$player1.name} is attacking!"
     redirect '/play'
   end
 
