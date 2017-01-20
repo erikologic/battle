@@ -4,9 +4,9 @@
   </head>
   <body>
     <h1>Battle</h1>
-    <p><%= $game.player_1.name %> vs. <%= $game.player_2.name %></p>
-    <p>Hit points Player 1: <%= $game.player_1.points %> </p>
-    <p>Hit points Player 2: <%= $game.player_2.points %></p>
+    <p><%= @game.player_1.name %> vs. <%= @game.player_2.name %></p>
+    <p>Hit points Player 1: <%= @game.player_1.points %> </p>
+    <p>Hit points Player 2: <%= @game.player_2.points %></p>
     <% if session[:turn] %>
       <br>
       <p><%= session[:turn] %></p>

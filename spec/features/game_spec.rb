@@ -5,6 +5,19 @@ describe Game do
   let(:player_2){Player.new("Enrico")}
   subject(:game){described_class.new(player_1, player_2)}
 
+  describe '.create' do
+    it 'create a new Game object and stores it inside the @game class instance variable' do
+      expect{described_class.create(player_1, player_2)}.not_to raise_error
+    end
+  end
+
+  describe '.instance' do
+    it 'returns the object created with .create' do
+      described_class.create(player_1, player_2)
+      expect(described_class.instance.class).to eq Game
+    end
+  end
+
   describe '#player_1' do
     it "stores an instance of player as player_1" do
       expect(game.player_1.name).to eq "Jack"
