@@ -10,8 +10,8 @@ class Battle < Sinatra::Base
 
   post '/game_starting' do
     $game = Game.new
-    $player1 = Player.new(params[:player_1_name])
-    $player2 = Player.new(params[:player_2_name])
+    $game.player_1 = Player.new(params[:player_1_name])
+    $game.player_2 = Player.new(params[:player_2_name])
     redirect '/play'
   end
 
@@ -22,8 +22,8 @@ class Battle < Sinatra::Base
 
 
   post '/p1_attacks' do
-    $game.attack($player2)
-    session[:last_action] = "#{$player1.name} is attacking!"
+    $game.attack($game.player_2)
+    session[:last_action] = "#{$game.player_1.name} is attacking!"
     redirect '/play'
   end
 
