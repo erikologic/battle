@@ -7,13 +7,13 @@
     <p><%= $game.player_1.name %> vs. <%= $game.player_2.name %></p>
     <p>Hit points Player 1: <%= $game.player_1.points %> </p>
     <p>Hit points Player 2: <%= $game.player_2.points %></p>
-    <% if session[:last_action] %>
+    <% if session[:turn] %>
       <br>
-      <p><%= session[:last_action] %></p>
+      <p><%= session[:turn] %></p>
     <% end %>
     <br>
-    <form action="/p1_attacks" method="post">
-      <input type="submit" value="Player 1 attacks" />
+    <form action="/attacks" method="post">
+      <input type="submit" value="Attack" />
     </form>
   </body>
 </html>
