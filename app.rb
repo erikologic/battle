@@ -16,16 +16,23 @@ class Battle < Sinatra::Base
   end
 
   get '/play' do
-    # @last_action = session[:last_action] ? session[:last_action] : nil
     erb :play
   end
 
 
   post '/attacks' do
-    $game.player_attack
+    begin
+      $game.player_attack
+    rescue
+      redirect '/game_over'
+    end
     $game.change_turn
     session[:turn] = "#{$game.not_active_player.name} has attacked!<br>Now it is #{$game.active_player.name}'s turn!"
     redirect '/play'
+  end
+
+  get '/game_over' do
+    erb :game_over
   end
 
   # start the server if ruby file executed directly

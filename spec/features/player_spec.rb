@@ -17,6 +17,9 @@ describe Player do
       expect{player.points -= 10}.to change{player.points}.to(90)
     end
 
+    it 'raises an error whenever points will be 0 or less' do
+      expect{player.points = 0}.to raise_error("Game Over!")
+    end
   end
 
 end
